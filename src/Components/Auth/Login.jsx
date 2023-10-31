@@ -5,9 +5,9 @@ const Login = () => {
 
     const MainContainer = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     display: flex;
-    background: #fff;
+    background: white;
     `;
 
     const Container = styled.section`
@@ -24,6 +24,7 @@ const Login = () => {
     @media only screen and (max-width: 600px) {
         flex-direction: ${props => (props.Container ? props.Container: 'column')};
         margin-left: ${props => (props.Container ? props.Container : '0.5em' )};
+        gap: ${props => (props.Container ? props.Container : '0.5em' )};
     }
     `;
 
@@ -39,15 +40,28 @@ const Login = () => {
 
     const Graphic = styled.section`
     
-    height: 70vh;
+    height: 60vh;
     width: 50%;
-    padding: 20px;
+    display: flex;
+    align-items: center;
     // border: 2px solid gray;
+    background: white;
+    
     
     @media only screen and (max-width: 600px) {
         width: ${props => (props.Graphic ? props.Graphic: '100%')}
     }
 
+    `;
+
+    const GraphicImg = styled.div`
+    margin-top: 2em;
+    width: 380px;
+    hegiht: 400px;
+    `;
+
+    const Background = styled.img`
+    
     `;
 
 
@@ -58,7 +72,7 @@ const Login = () => {
     flex-direction: column;
     align-items: flext-start;
     width: 50%;
-    height: 70vh;
+    height: 60vh;
     // background: teal;
     // border: 2px solid gray;
     padding: 2em;
@@ -73,12 +87,13 @@ const Login = () => {
     const Form = styled.input`
     
     width: 100%;
-    padding: 8px;
+    padding: 12px;
     border : 1px solid gray;
     border-radius: 3px;
     margin-top: 2em;
     margin: 0.5em;
     align-self: flex-start;
+    
     
     &::focus {
     //    border: 2px solid black
@@ -92,6 +107,7 @@ const Login = () => {
     margin-top: 1em;
     font-size: 0.5em;
     justify-content: space-between;
+    
     `;
 
     const InnerContainer2 = styled.div`
@@ -101,14 +117,6 @@ const Login = () => {
     font-size: 0.5em;
     `;
 
-    const InnerContainer3 = styled.div`
-    display: flex;
-    flex-direction: row;
-    margin-top: 1em;
-    font-size: 0.5em;
-    align-items: center;
-    width: 100%;
-    `;
 
     const Link = styled.a`
     color: #BF4F74;
@@ -119,6 +127,8 @@ const Login = () => {
     const Link2 = styled.a`
     color: #BF4F74;
     font-size: 1em;
+    display: flex;
+    align-self: center;
     `;
 
     const LoginButton = styled.button`
@@ -131,7 +141,18 @@ const Login = () => {
     font-size: 0.75em;
     margin-top: 2em;
     border-radius: 8px;
+    `;
 
+    const Para = styled.p`
+    font-size: 1.1em;
+    align-self: center;
+    margin-left: 11em;
+    display: flex;
+    flex-direction: row;
+
+    @media only screen and (max-width: 600px) {
+        margin-left: ${props => (props.Para ? props.para: '4em')}
+    }
     `;
 
   return (
@@ -139,26 +160,30 @@ const Login = () => {
     <MainContainer>
     <Container>
         <Graphic>
-            1
+            <GraphicImg>
+                <Background src='https://www.shutterstock.com/shutterstock/photos/2155193207/display_1500/stock-vector-fluid-gradient-background-vector-cute-and-minimalist-style-posters-photo-frame-cover-with-pastel-2155193207.jpg' width='380px' height='400px' />
+            </GraphicImg>
         </Graphic>
         <LoginBox>
             <Title>Log in</Title>
-            <Form type='text' placeholder='Login ID' />
+            <label style={{fontSize: '0.75em'}} htmlFor="email">Email</label>
+            <Form  type='text' placeholder='Login ID' />
+            <label style={{fontSize: '0.75em'}} htmlFor="password">Password</label>
             <Form type='password' placeholder='Password' />
             <InnerContainer>
                 <div>
              <input type="checkbox" id='option1' name='option1' value='Remember me' />
              <label htmlFor="option1">Remember me</label> </div>
-             <Link2>Forgot-Password?</Link2>
+             <Link2 href='/'>Forgot-Password?</Link2>
              </InnerContainer>
              <InnerContainer2>
              <input type="checkbox" id='option2' name='option2' value='terms' />
              <label htmlFor="option2">Agree to <Link href='/' >terms & conditions</Link></label>
              </InnerContainer2>
              <LoginButton type='submit' >LogIn</LoginButton>
-             <InnerContainer3>
-             <small style={{fontSize: '1em'}}>Don't Have An Account</small><Link2 style={{fontWeight: 'bold', fontSize: '1.5em'}}>Register</Link2>
-             </InnerContainer3>
+             <InnerContainer2>
+             <Para>Don't Have An Account?? <Link2 href='/' style={{fontWeight: 'bold', fontSize: '1em'}}>Register Now</Link2> </Para> 
+             </InnerContainer2>
              
         </LoginBox>
     </Container>
